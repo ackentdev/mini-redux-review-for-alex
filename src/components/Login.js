@@ -1,9 +1,13 @@
 import {useState} from 'react';
+import {connect} from 'react-redux';
+import {loginUser} from '../redux/reducer.js';
 
 const Login = (props) => {
     const [loginInfo, setLoginInfo] = useState({ username: '', password: ''})
 
-    const login = () => {
+    const login = (e) => {
+        e.preventDefault()
+        props.loginUser(loginInfo.username)
         props.history.push('/main')
     }
 
@@ -14,4 +18,6 @@ const Login = (props) => {
     </form>
 }
 
-export default Login;
+// const mapStateToProps = state => state;
+
+export default connect(null, {loginUser})(Login);

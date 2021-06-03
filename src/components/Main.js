@@ -1,7 +1,11 @@
-const Main = () => {
+import {connect} from 'react-redux';
+
+const Main = (props) => {
     return <div>
-        <h3>Welcome to the website, [redacted]</h3>
+        <h3>Welcome to the website, {props.username}</h3>
     </div>
 }
 
-export default Main;
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps)(Main);
